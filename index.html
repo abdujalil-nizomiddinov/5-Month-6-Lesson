@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Market</title>
+    <link rel="stylesheet" href="./src/css/main.css" />
+    <link rel="icon" href="./src/pic/shopping-cart.png" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <nav class="bg-white shadow-md">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center">
+            <a href="#" class="text-2xl font-bold text-blue-600">
+              <i class="fas fa-shopping-cart mr-2"></i>
+              <span class="inline max-[300px]:hidden">Online Market</span>
+            </a>
+          </div>
+          <div class="hidden md:flex flex-1 mx-10">
+            <div class="relative w-full">
+              <input
+                type="text"
+                placeholder="Search for products..."
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                class="absolute right-0 top-0 h-full px-4 text-gray-600 hover:text-blue-600"
+              >
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 relative block max-[400px]:hidden"
+            >
+              <i class="fas fa-heart text-xl"></i>
+            </a>
+            <a
+              href="#"
+              class="text-gray-600 hover:text-blue-600 relative max-[400px]:hidden"
+            >
+              <i class="fas fa-shopping-bag text-xl" id="karzinka-btn"></i>
+            </a>
+            <div class="relative group block max-[400px]:hidden">
+              <button
+                class="flex items-center text-gray-600 hover:text-blue-600"
+              >
+                <i class="fas fa-user-circle text-xl"></i>
+              </button>
+            </div>
+            <button
+              id="mobile-menu-button"
+              class="text-gray-600 hover:text-blue-600 lg:hidden"
+            >
+              <i class="fas fa-bars text-[26px] text-[#000000]"></i>
+            </button>
+          </div>
+        </div>
+        <div id="mobile-search" class="md:hidden pb-4 max-[225px]:hidden">
+          <input
+            type="text"
+            placeholder="Search for products..."
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+      </div>
+      <div id="mobile-menu" class="lg:hidden hidden">
+        <div class="px-4 py-3 border-t border-gray-200">
+          <a href="#" class="block py-2 text-gray-700 hover:text-blue-600"
+            >Sign In</a
+          >
+          <a href="#" class="block py-2 text-gray-700 hover:text-blue-600"
+            >Register</a
+          >
+          <a href="#" class="block py-2 text-gray-700 hover:text-blue-600"
+            >My Profile</a
+          >
+        </div>
+        <div
+          class="px-4 py-3 border-t border-gray-200 flex items-center space-x-4 max-[250px]:hidden"
+        >
+          <span><i class="fas fa-phone mr-1"></i> +998 90 123 45 67</span>
+          <span class="max-[400px]:hidden"
+            ><i class="fas fa-envelope mr-1"></i> info@uzummarket.com</span
+          >
+        </div>
+      </div>
+    </nav>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <div class="container mx-auto px-4 py-8" id="karzinka">
+      <h1 class="text-3xl font-bold mb-8 text-center">Online Market</h1>
+      <div class="max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div class="bg-gray-100 px-6 py-4 border-b flex gap-4">
+            <h2 class="text-2xl font-bold">Karzinka:</h2>
+            <p class="mt-[7px]" id="idlar"></p>
+          </div>
+          <div class="p-6" id="cart-items"></div>
+          <div id="cart-footer" class="bg-gray-100 px-6 py-4"></div>
+        </div>
+      </div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <div class="p-4 bg-gray-100 rounded mb-6 m-auto justify-items-center items-center flex-col gap-4 flex border-[2px] w-[300px] border-blue-500 shadow-xl rounded-[20px]">
+      <h2 class="text-xl font-bold mb-2 border-b-[2px] pb-1 w-full text-center border-blue-500">Yangi mahsulot qo‘shish</h2>
+      <input
+        id="name"
+        placeholder="Nomi"
+        class="border px-2 py-1 mr-2 rounded"
+      />
+      <input
+        id="category"
+        placeholder="Kategoriya"
+        class="border px-2 py-1 mr-2 rounded"
+      />
+      <input
+        id="image"
+        placeholder="Rasm URL"
+        class="border px-2 py-1 mr-2 rounded"
+      />
+      <input
+        id="discount"
+        type="number"
+        placeholder="Chegirma (%)"
+        class="border px-2 py-1 mr-2 rounded w-34"
+      />
+      <input
+        id="price"
+        type="number"
+        placeholder="Narxi"
+        class="border px-2 py-1 mr-2 rounded w-24"
+      />
+      <input
+        id="rating"
+        type="number"
+        step="0.1"
+        placeholder="Reyting"
+        class="border px-2 py-1 mr-2 rounded w-24"
+      />
+      <label class="border-b-[2px] border-blue-500 pb-2 font-bold w-full text-center pr-3">
+        <input type="checkbox" id="inStock" class="mr-1" />Sotuvda
+      </label>
+      <button
+        onclick="addNewProduct()"
+        class="bg-blue-600 text-white px-4 py-2 rounded w-full"
+      >
+        Qo‘shish
+      </button>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <div class="container mx-auto px-20 m-20">
+      <div
+        class="grid grid-cols-1 m-auto justify-items-center items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        id="cards"
+      ></div>
+    </div>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <footer class="bg-gray-900 text-white">
+      <div class="max-w-[1100px] mx-auto w-full py-12 max-[1125px]:px-4">
+        <div
+          class="flex justify-between max-[565px]:flex-col max-[565px]:gap-10"
+        >
+          <div class="mb-6 md:mb-0">
+            <h2 class="text-2xl font-bold mb-4">Online Market</h2>
+            <p class="text-gray-400 mb-4 max-w-[300px]">
+              Your one-stop shop for all your needs. Quality products at
+              affordable prices.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                <i class="fab fa-facebook-f text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                <i class="fab fa-twitter text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                <i class="fab fa-instagram text-xl"></i>
+              </a>
+              <a
+                href="#"
+                class="text-gray-400 hover:text-white transition-colors duration-300"
+              >
+                <i class="fab fa-telegram text-xl"></i>
+              </a>
+            </div>
+          </div>
+          <div class="max-[1125px]:hidden">
+            <h3 class="text-lg font-semibold mb-4 text-gray-200">
+              Quick Links
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Categories</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-gray-400 hover:text-white transition-colors duration-300"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="max-[900px]:hidden">
+            <h3 class="text-lg font-semibold mb-4 text-gray-200">Contact Us</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start">
+                <i class="fas fa-map-marker-alt mt-1 mr-3 text-gray-400"></i>
+                <span class="text-gray-400"
+                  >123 Market Street, City Name, Country</span
+                >
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-phone-alt mr-3 text-gray-400"></i>
+                <span class="text-gray-400">+998 90 123 45 67</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-envelope mr-3 text-gray-400"></i>
+                <span class="text-gray-400">info@marketname.com</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-clock mr-3 text-gray-400"></i>
+                <span class="text-gray-400">Mon-Sat: 9:00 AM - 8:00 PM</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="flex flex-col gap-2 max-[325px]:hidden">
+            <h3 class="text-lg font-semibold mb-4 text-gray-200">
+              Payment Methods
+            </h3>
+            <div class="flex flex-wrap gap-4">
+              <div class="bg-white p-2 rounded-md">
+                <i class="fab fa-cc-visa text-blue-800 text-2xl"></i>
+              </div>
+              <div class="bg-white p-2 rounded-md">
+                <i class="fab fa-cc-mastercard text-red-600 text-2xl"></i>
+              </div>
+              <div class="bg-white p-2 rounded-md">
+                <i class="fab fa-apple-pay text-black text-2xl"></i>
+              </div>
+              <div class="bg-white p-2 rounded-md">
+                <i class="fab fa-google-pay text-gray-700 text-2xl"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-gray-950 py-4">
+        <div
+          class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-gray-400 text-sm mb-4 m-auto md:mb-0">
+            &copy; 2025 MarketName. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------------------------ -->
+    <script src="./src/js/app.js"></script>
+  </body>
+</html>
